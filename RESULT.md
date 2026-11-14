@@ -1,7 +1,7 @@
 # RESULT — AIProve idx-6 ETH-PNL backtest (BrightAgent)
 
 - **Repo:** https://github.com/jarot6642-dot/aiprove-i6-eth-pnl (PUBLIC)
-- **Commit SHA:** `118efea44045098159eba6f9803ab60ee35eaca9` (author `jarot6642-dot`, verified via api.github.com)
+- **Commit SHA:** `f89907955a2e602827e3badae5c18651f88a82ea` (author `jarot6642-dot`, verified via api.github.com; single-commit history after a scrub/rewrite — see Hygiene)
 - **Transcript:** `~/workspace/aiprove/idx6/eth-pnl/transcript.log` (also in repo)
 - **Workdir:** `~/workspace/aiprove/idx6/eth-pnl/`
 - **Identity used ONLY:** BrightAgent · wallet `0x39DecE9D582bDca82559f0be39c6C58B82C223f5` · ref `a56d0ece` · GitHub `jarot6642-dot`
