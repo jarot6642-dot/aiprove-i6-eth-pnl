@@ -1,0 +1,35 @@
+=== BrightAgent idx-6 ETH-PNL backtest — transcript ===
+$ curl -s "https://api.binance.com/api/v3/klines?symbol=ETHUSDT&interval=4h&limit=1000" -o klines_raw.json
+-> HTTP 451: api.binance.com "Service unavailable from a restricted location" from this VM.
+$ curl -s "https://api.binance.us/api/v3/klines?symbol=ETHUSDT&interval=4h&limit=1000" -o klines_raw.json
+-> HTTP 200, 1000 candles, first 2026-05-31 08:00 UTC, last 2026-11-14 04:00 UTC, last close 1895.33 USDT
+$ python3 backtest.py
+Matplotlib is building the font cache; this may take a moment.
+window: 2026-08-16 00:00:00+00:00 -> 2026-11-14 04:00:00+00:00  (540 x 4h candles)
+ETH close first=1883.09 last=1895.33
+A-classic: PnL -378.25 USDT (-3.78%) | trades 30 | win 36.7% | maxDD -19.06% (-1906.15 USDT) | final equity 9621.75
+B-fast: PnL -1490.88 USDT (-14.91%) | trades 55 | win 36.4% | maxDD -24.61% (-2488.12 USDT) | final equity 8509.12
+C-slow: PnL -1066.84 USDT (-10.67%) | trades 29 | win 34.5% | maxDD -25.23% (-2523.12 USDT) | final equity 8933.16
+
+BEST: A-classic  PnL -378.25 USDT
+wrote results.json trades.csv equity_curve.csv equity_curve.png (30 trades)
+window: 2026-08-16 00:00:00+00:00 -> 2026-11-14 04:00:00+00:00  (540 x 4h candles)
+ETH close first=1883.09 last=1895.33
+A-classic: PnL -378.25 USDT (-3.78%) | trades 30 | win 36.7% | maxDD -19.06% (-1906.15 USDT) | final equity 9621.75
+B-fast: PnL -1490.88 USDT (-14.91%) | trades 55 | win 36.4% | maxDD -24.61% (-2488.12 USDT) | final equity 8509.12
+C-slow: PnL -1066.84 USDT (-10.67%) | trades 29 | win 34.5% | maxDD -25.23% (-2523.12 USDT) | final equity 8933.16
+D-classic+EMA100-filter: PnL +373.74 USDT (+3.74%) | trades 25 | win 44.0% | maxDD -12.66% (-1281.64 USDT) | final equity 10373.74
+E-wide-target: PnL -476.53 USDT (-4.77%) | trades 29 | win 31.0% | maxDD -17.37% (-1737.28 USDT) | final equity 9523.47
+
+BEST: D-classic+EMA100-filter  PnL +373.74 USDT
+wrote results.json trades.csv equity_curve.csv equity_curve.png (25 trades)
+$ grep -rniE "<other-wallets-identities-pattern>" . ; grep -rniE "[0-9a-f]{64}|gho_|private[_ ]?key|ghp_" .
+-> NONE FOUND for other identities; NONE FOUND for secrets. Only identity present: BrightAgent / a56d0ece / jarot6642-dot.
+$ rm -rf __pycache__   (compiled bytecode removed before push)
+$ git push origin main
+-> FIRST ATTEMPT FAILED: "Permission denied" to the wrong GitHub account (the global gh auth git-credential helper ran before the local jarot helper).
+$ git config --unset credential.https://github.com.helper ; git config credential.helper "" ; git config --add credential.helper "/home/hatch/workspace/aiprove/idx6/gh-credential-jarot.sh"
+$ git push origin main
+-> OK: main -> main (commit 118efea44045098159eba6f9803ab60ee35eaca9)
+$ curl -s https://api.github.com/repos/jarot6642-dot/aiprove-i6-eth-pnl (public API, no token)
+-> private: false, default_branch: main, pushed_at 2026-11-14T04:39:25Z; latest commit author login jarot6642-dot, sha 118efea44045098159eba6f9803ab60ee35eaca9; 8 files present.
